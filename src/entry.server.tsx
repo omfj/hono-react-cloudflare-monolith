@@ -1,7 +1,7 @@
 import { trpcServer } from "@hono/trpc-server";
 import { Hono } from "hono";
 import { renderToString } from "react-dom/server";
-import { appRouter } from "./trpc/router";
+import { appRouter } from "./trpc/server/router";
 
 type Env = {
   Bindings: {
@@ -32,9 +32,9 @@ app.get("*", (c) => {
           <meta charSet="utf-8" />
           <meta content="width=device-width, initial-scale=1" name="viewport" />
           {import.meta.env.PROD ? (
-            <script type="module" src="/static/client/main.js"></script>
+            <script type="module" src="/static/main.js"></script>
           ) : (
-            <script type="module" src="/src/client/main.tsx"></script>
+            <script type="module" src="/src/entry.client.tsx"></script>
           )}
         </head>
         <body>
